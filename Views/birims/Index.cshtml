@@ -1,0 +1,31 @@
+﻿@model IEnumerable<etu_rehber.Models.birim>
+@using etu_rehber.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<section class="our-webcoderskull padding-lg">
+    <div class="container">
+        <div class="row heading heading-icon">
+            <h2 class="as ">ETU  BİRİMLER</h2>
+        </div>
+        <ul class="row">
+
+            @foreach (var item in Model)
+            {
+                <li class="col-12 col-md-6 col-lg-3">
+                    <div class="cnt-block equal-hight" style="height: 150px;">
+                        <h3> @Html.ActionLink(item.birim_adi, "birimler", new { id = item.birim_id }) </h3>
+                    </div>
+                </li>
+
+            }
+
+        </ul>
+        <td>
+            @Html.ActionLink("Create New", "Create", new { id = 1 }, new { @class = "btn6" })
+        </td>
+    </div>
+</section>

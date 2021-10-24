@@ -1,0 +1,44 @@
+﻿@using etu_rehber.Models;
+@model IEnumerable<etu_rehber.Models.liste>
+
+@{
+    ViewBag.Title = "birimler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" style="height: 500px;">
+
+<section class="our-webcoderskull padding-lg">
+    <div class="container">
+        <div class="row heading heading-icon">
+            <br />
+            <h2 class="as">ETU KİŞİLER </h2> <br /> <br />
+            <ul class="row">
+                @foreach (var item in Model)
+                {
+
+                    <li class="col-12 col-md-6 col-lg-3">
+                        <div class="cnt-block equal-hight success" style="height: 300px;" >
+                        
+                            <h3> @Html.DisplayFor(modelItem => item.ad) @Html.DisplayFor(modelItem => item.soyad)</h3>
+
+                            <p>@Html.DisplayFor(modelItem => item.tel)</p>
+                            <p>@Html.DisplayFor(modelItem => item.mail)</p>
+                            <p>@Html.DisplayFor(modelItem => item.gorevi)</p>
+                            <p>@Html.DisplayFor(modelItem => item.entity)</p>
+                            <p>@Html.DisplayFor(modelItem => item.fakulte.fakulte_adi)</p>
+                            <th> @Html.ActionLink("Delete", "Delete", new { id = item.liste_id }, new { @class = "btn4" }) </th>
+                            <th> @Html.ActionLink("Edit", "Edit", new { id = item.liste_id }, new { @class = "btn2" }) </th>
+                            <th>@Html.ActionLink("Details", "Details", new { id = item.liste_id }, new { @class = "btn3" }) </th>
+                        </div>
+                    </li>
+
+
+                }
+
+            </ul>  
+        </div>
+    </div>
+</section>
+

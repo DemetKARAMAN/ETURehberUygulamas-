@@ -1,0 +1,142 @@
+﻿@using etu_rehber.Models;
+@model IEnumerable<etu_rehber.Models.liste>
+
+
+@{
+    ViewBag.Title = "ETÜ REHBER";
+    IEnumerable<fakulte> fakulte = ViewData["fakultee"] as IEnumerable<fakulte>;
+    IEnumerable<birim> birim = ViewData["birimm"] as IEnumerable<birim>;
+    IEnumerable<admin> admin = ViewData["adminn"] as IEnumerable<admin>;
+    IEnumerable<bolum> bolum = ViewData["bolumm"] as IEnumerable<bolum>;
+    IEnumerable<liste> liste = ViewData["listee"] as IEnumerable<liste>;
+    IEnumerable<yetki> yetki = ViewData["yetkii"] as IEnumerable<yetki>;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <body>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <section class="our-webcoderskull padding-lg ">
+            <div class="container ">
+                <div class="row heading heading-icon">
+                    <h2 class="as">ERZURUM TEKNİK ÜNİVERSİTESİ</h2>
+                </div>
+                <ul class="row">
+                    @if (User.IsInRole("Seyfi Kalaycıoğlu"))
+                    {
+
+                        <li class="col-12 col-md-6 col-lg-3 row.heading h2 row ">
+                            <div class="cnt-block equal-hight" style="height: 250px;">
+                                <div class="pic">
+                                    <img src="https://www.onkoemlak.com/images/ikon/7isyeri.png">
+                                </div>
+                                <h3> @Html.ActionLink("Fakülteler", "Index", "fakultes")  </h3>
+                            </div>
+                        </li>
+                    }
+                    @if (User.IsInRole("Seyfi Kalaycıoğlu"))
+                    {
+                        <li class="col-12 col-md-6 col-lg-3 row.heading h2 row ">
+                            <div class="cnt-block equal-hight " style="height: 250px;">
+                                <div class="pic">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbdtKjLJSZCFK6l2hYna0BTFpIyvR2NZz-0A&usqp=CAU">
+                                </div>
+                                <h3> @Html.ActionLink("Bölümler", "Index", "bolums") </h3>
+                            </div>
+                        </li>
+                    }
+                    @if (User.IsInRole("Seyfi Kalaycıoğlu"))
+                    {
+                        <li class="col-12 col-md-6 col-lg-3 row.heading h2 row ">
+                            <div class="cnt-block equal-hight " style="height: 250px;">
+                                <div class="pic">
+                                    <img src="https://img1.pngindir.com/20180328/xxq/kisspng-back-office-business-management-computer-icons-office-5abb15edaae4f5.0078271915222102857.jpg">
+                                </div>
+                                <h3> @Html.ActionLink("Birimler", "Index", "birims")</h3>
+                            </div>
+                        </li>
+                    }
+                    @if (User.IsInRole("Seyfi Kalaycıoğlu"))
+                    {
+                        <li class="col-12 col-md-6 col-lg-3 row.heading h2 row ">
+                            <div class="cnt-block equal-hight" style="height: 250px;">
+                                <div class="pic">
+                                    <img src="https://cdn.xl.thumbs.canstockphoto.com/illustration-of-flat-group-of-people-icon-vector-symbol-background-clipart-vector_csp41631452.jpg">
+                                </div>
+                                <h3>  @Html.ActionLink("Kişiler", "Index", "listes")</h3>
+                            </div>
+                        </li>
+                    }
+                    @if (User.IsInRole("Seyfi Kalaycıoğlu"))
+                    {
+                        <li class="col-12 col-md-6 col-lg-3 row.heading h2 row ">
+                            <div class="cnt-block equal-hight" style="height: 250px;">
+                                <div class="pic">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQERkFBCAQ9okHfQ0Elat53_c8gSNmL4GXWsA&usqp=CAU">
+                                </div>
+                                <h3> @Html.ActionLink("Yöneticiler", "Index", "admins") </h3>
+                            </div>
+                        </li>
+
+                    }
+                    @if (User.IsInRole("Seyfi Kalaycıoğlu"))
+                    {
+                        <li class="col-12 col-md-6 col-lg-3 row.heading h2 row ">
+                            <div class="cnt-block equal-hight" style="height:250px;">
+                                <div class="pic">
+                                    <img src="https://e7.pngegg.com/pngimages/839/472/png-clipart-computer-icons-digital-signature-signature-block-email-miscellaneous-angle.png">
+                                </div>
+                                <h3> @Html.ActionLink("Yetkiler", "Index", "yetkis")</h3>
+                            </div>
+                        </li>
+
+                    }
+                    @if (User.IsInRole("Adem Tanas") || User.IsInRole("İlyas Arınç") || User.IsInRole("Rasim Yıldırım") || User.IsInRole("Ahmet Yıldırım") || User.IsInRole("Hasan Ali"))
+                    {
+                        foreach (var item in birim)
+                        {
+                            <li class="col-12 col-md-6 col-lg-3">
+                                <div class="cnt-block equal-hight" style="height: 150px;">
+                                    @if (item.birim_id == 1)
+                                    {
+                                        if (User.IsInRole("Adem Tanas") || User.IsInRole("İlyas Arınç") || User.IsInRole("Rasim Yıldırım"))
+                                        {
+                                            <h3> @Html.ActionLink(item.birim_adi, "Birim", new { birimid = item.birim_id}) </h3>
+                                            break;
+                                        }
+
+                                    }
+
+                                    @if (item.birim_id == 2)
+                                    {
+                                        if (User.IsInRole("Ahmet Yıldırım") || User.IsInRole("Hasan Ali"))
+                                        {
+                                            <h3> @Html.ActionLink(item.birim_adi, "Birim", new { birimid= item.birim_id }) </h3>
+                                            break;
+                                        }
+
+                                    }
+                                </div>
+                            </li>
+
+                        }
+
+
+                    }
+
+
+
+
+                </ul>
+
+            </div>
+        </section>
+    </body>
+
+
+
+
+
+
+
+

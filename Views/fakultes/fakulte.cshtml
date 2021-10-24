@@ -1,0 +1,64 @@
+﻿@model IEnumerable<etu_rehber.Models.bolum>
+@using etu_rehber.Models;
+
+@{
+    ViewBag.Title = "bolumler";
+    IEnumerable<fakulte> fakulte = ViewData["fakulteasdad"] as IEnumerable<fakulte>;
+    IEnumerable<birim> brmm = ViewData["brm"] as IEnumerable<birim>;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .p{
+
+    }
+    .panel .panel-body {
+        padding: 20px;
+    }
+
+    .panel .table-responsive .table-bordered {
+        border: 10px solid #ddd;
+    }
+
+    .panel .panel-body {
+        margin: 0;
+    }
+
+     .panel .panel-body .table tbody .action-list li a:hover:after {
+            display: block;
+     }
+
+    .panel .table-responsive .table-bordered {
+        border: 1px solid #ddd;
+    }
+
+    .table {
+        width: 80%;
+        max-width: 80%;
+        margin-bottom: 20px;
+    }
+</style>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" style="height: 500px;">
+
+<section class="our-webcoderskull padding-lg ">
+    <div class="container">
+        <div class="row heading heading-icon ">
+            <br />
+            <h2 class="as">ETÜ BÖLÜMLER </h2> <br /> <br />
+        </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover table-bordered" align="center">
+                    
+                        @foreach (var item in Model)
+                        {
+                            <tr class="danger" align="center">
+                                <td> <b>
+                                   @Html.DisplayFor(modelItem => item.bolum_adi) </b>
+                                </td>
+                            </tr>
+                        }
+                   
+                </table>
+            </div>
+    </div>
+</section>

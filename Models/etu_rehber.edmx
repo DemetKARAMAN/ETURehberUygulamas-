@@ -1,0 +1,506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="etu_rehberModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adi" Type="varchar" MaxLength="50" />
+          <Property Name="durum" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="birim">
+          <Key>
+            <PropertyRef Name="birim_id" />
+          </Key>
+          <Property Name="birim_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="birim_adi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="bolum">
+          <Key>
+            <PropertyRef Name="bolum_id" />
+          </Key>
+          <Property Name="bolum_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bolum_adi" Type="varchar" MaxLength="50" />
+          <Property Name="fak_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fakulte">
+          <Key>
+            <PropertyRef Name="fakulte_id" />
+          </Key>
+          <Property Name="fakulte_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fakulte_adi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="liste">
+          <Key>
+            <PropertyRef Name="liste_id" />
+          </Key>
+          <Property Name="liste_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="varchar" MaxLength="50" />
+          <Property Name="soyad" Type="varchar" MaxLength="50" />
+          <Property Name="tel" Type="varchar" MaxLength="11" />
+          <Property Name="mail" Type="varchar" MaxLength="50" />
+          <Property Name="sifre" Type="int" />
+          <Property Name="gorevi" Type="varchar" MaxLength="50" />
+          <Property Name="tarih" Type="date" />
+          <Property Name="entity" Type="varchar" MaxLength="1250" />
+          <Property Name="admin_id" Type="int" Nullable="false" />
+          <Property Name="fak_id" Type="int" Nullable="false" />
+          <Property Name="birim_id" Type="int" Nullable="false" />
+          <Property Name="bolum_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="yetki">
+          <Key>
+            <PropertyRef Name="yetki_id" />
+          </Key>
+          <Property Name="yetki_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="admin_id" Type="int" Nullable="false" />
+          <Property Name="fak_id" Type="int" Nullable="false" />
+          <Property Name="birim_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__bolum__fak_id__164452B1">
+          <End Role="fakulte" Type="Self.fakulte" Multiplicity="1" />
+          <End Role="bolum" Type="Self.bolum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fakulte">
+              <PropertyRef Name="fakulte_id" />
+            </Principal>
+            <Dependent Role="bolum">
+              <PropertyRef Name="fak_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__liste__admin_id__1DE57479">
+          <End Role="admin" Type="Self.admin" Multiplicity="1" />
+          <End Role="liste" Type="Self.liste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="liste">
+              <PropertyRef Name="admin_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__liste__birim_id__1FCDBCEB">
+          <End Role="birim" Type="Self.birim" Multiplicity="1" />
+          <End Role="liste" Type="Self.liste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="birim">
+              <PropertyRef Name="birim_id" />
+            </Principal>
+            <Dependent Role="liste">
+              <PropertyRef Name="birim_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__liste__bolum_id__20C1E124">
+          <End Role="bolum" Type="Self.bolum" Multiplicity="1" />
+          <End Role="liste" Type="Self.liste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bolum">
+              <PropertyRef Name="bolum_id" />
+            </Principal>
+            <Dependent Role="liste">
+              <PropertyRef Name="bolum_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__liste__fak_id__1ED998B2">
+          <End Role="fakulte" Type="Self.fakulte" Multiplicity="1" />
+          <End Role="liste" Type="Self.liste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fakulte">
+              <PropertyRef Name="fakulte_id" />
+            </Principal>
+            <Dependent Role="liste">
+              <PropertyRef Name="fak_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__yetki__admin_id__1920BF5C">
+          <End Role="admin" Type="Self.admin" Multiplicity="1" />
+          <End Role="yetki" Type="Self.yetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="yetki">
+              <PropertyRef Name="admin_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__yetki__birim_id__1B0907CE">
+          <End Role="birim" Type="Self.birim" Multiplicity="1" />
+          <End Role="yetki" Type="Self.yetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="birim">
+              <PropertyRef Name="birim_id" />
+            </Principal>
+            <Dependent Role="yetki">
+              <PropertyRef Name="birim_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__yetki__fak_id__1A14E395">
+          <End Role="fakulte" Type="Self.fakulte" Multiplicity="1" />
+          <End Role="yetki" Type="Self.yetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fakulte">
+              <PropertyRef Name="fakulte_id" />
+            </Principal>
+            <Dependent Role="yetki">
+              <PropertyRef Name="fak_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="etu_rehberModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="birim" EntityType="Self.birim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bolum" EntityType="Self.bolum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fakulte" EntityType="Self.fakulte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="liste" EntityType="Self.liste" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="yetki" EntityType="Self.yetki" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__bolum__fak_id__164452B1" Association="Self.FK__bolum__fak_id__164452B1">
+            <End Role="fakulte" EntitySet="fakulte" />
+            <End Role="bolum" EntitySet="bolum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__liste__admin_id__1DE57479" Association="Self.FK__liste__admin_id__1DE57479">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="liste" EntitySet="liste" />
+          </AssociationSet>
+          <AssociationSet Name="FK__liste__birim_id__1FCDBCEB" Association="Self.FK__liste__birim_id__1FCDBCEB">
+            <End Role="birim" EntitySet="birim" />
+            <End Role="liste" EntitySet="liste" />
+          </AssociationSet>
+          <AssociationSet Name="FK__liste__bolum_id__20C1E124" Association="Self.FK__liste__bolum_id__20C1E124">
+            <End Role="bolum" EntitySet="bolum" />
+            <End Role="liste" EntitySet="liste" />
+          </AssociationSet>
+          <AssociationSet Name="FK__liste__fak_id__1ED998B2" Association="Self.FK__liste__fak_id__1ED998B2">
+            <End Role="fakulte" EntitySet="fakulte" />
+            <End Role="liste" EntitySet="liste" />
+          </AssociationSet>
+          <AssociationSet Name="FK__yetki__admin_id__1920BF5C" Association="Self.FK__yetki__admin_id__1920BF5C">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="yetki" EntitySet="yetki" />
+          </AssociationSet>
+          <AssociationSet Name="FK__yetki__birim_id__1B0907CE" Association="Self.FK__yetki__birim_id__1B0907CE">
+            <End Role="birim" EntitySet="birim" />
+            <End Role="yetki" EntitySet="yetki" />
+          </AssociationSet>
+          <AssociationSet Name="FK__yetki__fak_id__1A14E395" Association="Self.FK__yetki__fak_id__1A14E395">
+            <End Role="fakulte" EntitySet="fakulte" />
+            <End Role="yetki" EntitySet="yetki" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="etu_rehberModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="durum" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="liste" Relationship="Self.FK__liste__admin_id__1DE57479" FromRole="admin" ToRole="liste" />
+          <NavigationProperty Name="yetki" Relationship="Self.FK__yetki__admin_id__1920BF5C" FromRole="admin" ToRole="yetki" />
+        </EntityType>
+        <EntityType Name="birim">
+          <Key>
+            <PropertyRef Name="birim_id" />
+          </Key>
+          <Property Name="birim_id" Type="Int32" Nullable="false" />
+          <Property Name="birim_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="liste" Relationship="Self.FK__liste__birim_id__1FCDBCEB" FromRole="birim" ToRole="liste" />
+          <NavigationProperty Name="yetki" Relationship="Self.FK__yetki__birim_id__1B0907CE" FromRole="birim" ToRole="yetki" />
+        </EntityType>
+        <EntityType Name="bolum">
+          <Key>
+            <PropertyRef Name="bolum_id" />
+          </Key>
+          <Property Name="bolum_id" Type="Int32" Nullable="false" />
+          <Property Name="bolum_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fak_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="fakulte" Relationship="Self.FK__bolum__fak_id__164452B1" FromRole="bolum" ToRole="fakulte" />
+          <NavigationProperty Name="liste" Relationship="Self.FK__liste__bolum_id__20C1E124" FromRole="bolum" ToRole="liste" />
+        </EntityType>
+        <EntityType Name="fakulte">
+          <Key>
+            <PropertyRef Name="fakulte_id" />
+          </Key>
+          <Property Name="fakulte_id" Type="Int32" Nullable="false" />
+          <Property Name="fakulte_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bolum" Relationship="Self.FK__bolum__fak_id__164452B1" FromRole="fakulte" ToRole="bolum" />
+          <NavigationProperty Name="liste" Relationship="Self.FK__liste__fak_id__1ED998B2" FromRole="fakulte" ToRole="liste" />
+          <NavigationProperty Name="yetki" Relationship="Self.FK__yetki__fak_id__1A14E395" FromRole="fakulte" ToRole="yetki" />
+        </EntityType>
+        <EntityType Name="liste">
+          <Key>
+            <PropertyRef Name="liste_id" />
+          </Key>
+          <Property Name="liste_id" Type="Int32" Nullable="false" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tel" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gorevi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tarih" Type="DateTime" Precision="0" />
+          <Property Name="entity" Type="String" MaxLength="1250" FixedLength="false" Unicode="false" />
+          <Property Name="admin_id" Type="Int32" Nullable="false" />
+          <Property Name="fak_id" Type="Int32" Nullable="false" />
+          <Property Name="birim_id" Type="Int32" Nullable="false" />
+          <Property Name="bolum_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="admin" Relationship="Self.FK__liste__admin_id__1DE57479" FromRole="liste" ToRole="admin" />
+          <NavigationProperty Name="birim" Relationship="Self.FK__liste__birim_id__1FCDBCEB" FromRole="liste" ToRole="birim" />
+          <NavigationProperty Name="bolum" Relationship="Self.FK__liste__bolum_id__20C1E124" FromRole="liste" ToRole="bolum" />
+          <NavigationProperty Name="fakulte" Relationship="Self.FK__liste__fak_id__1ED998B2" FromRole="liste" ToRole="fakulte" />
+          <Property Name="sifre" Type="Int32" />
+        </EntityType>
+        <EntityType Name="yetki">
+          <Key>
+            <PropertyRef Name="yetki_id" />
+          </Key>
+          <Property Name="yetki_id" Type="Int32" Nullable="false" />
+          <Property Name="admin_id" Type="Int32" Nullable="false" />
+          <Property Name="fak_id" Type="Int32" Nullable="false" />
+          <Property Name="birim_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="admin" Relationship="Self.FK__yetki__admin_id__1920BF5C" FromRole="yetki" ToRole="admin" />
+          <NavigationProperty Name="birim" Relationship="Self.FK__yetki__birim_id__1B0907CE" FromRole="yetki" ToRole="birim" />
+          <NavigationProperty Name="fakulte" Relationship="Self.FK__yetki__fak_id__1A14E395" FromRole="yetki" ToRole="fakulte" />
+        </EntityType>
+        <Association Name="FK__liste__admin_id__1DE57479">
+          <End Role="admin" Type="Self.admin" Multiplicity="1" />
+          <End Role="liste" Type="Self.liste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="liste">
+              <PropertyRef Name="admin_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__yetki__admin_id__1920BF5C">
+          <End Role="admin" Type="Self.admin" Multiplicity="1" />
+          <End Role="yetki" Type="Self.yetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="yetki">
+              <PropertyRef Name="admin_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__liste__birim_id__1FCDBCEB">
+          <End Role="birim" Type="Self.birim" Multiplicity="1" />
+          <End Role="liste" Type="Self.liste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="birim">
+              <PropertyRef Name="birim_id" />
+            </Principal>
+            <Dependent Role="liste">
+              <PropertyRef Name="birim_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__yetki__birim_id__1B0907CE">
+          <End Role="birim" Type="Self.birim" Multiplicity="1" />
+          <End Role="yetki" Type="Self.yetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="birim">
+              <PropertyRef Name="birim_id" />
+            </Principal>
+            <Dependent Role="yetki">
+              <PropertyRef Name="birim_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__bolum__fak_id__164452B1">
+          <End Role="fakulte" Type="Self.fakulte" Multiplicity="1" />
+          <End Role="bolum" Type="Self.bolum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fakulte">
+              <PropertyRef Name="fakulte_id" />
+            </Principal>
+            <Dependent Role="bolum">
+              <PropertyRef Name="fak_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__liste__bolum_id__20C1E124">
+          <End Role="bolum" Type="Self.bolum" Multiplicity="1" />
+          <End Role="liste" Type="Self.liste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bolum">
+              <PropertyRef Name="bolum_id" />
+            </Principal>
+            <Dependent Role="liste">
+              <PropertyRef Name="bolum_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__liste__fak_id__1ED998B2">
+          <End Role="fakulte" Type="Self.fakulte" Multiplicity="1" />
+          <End Role="liste" Type="Self.liste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fakulte">
+              <PropertyRef Name="fakulte_id" />
+            </Principal>
+            <Dependent Role="liste">
+              <PropertyRef Name="fak_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__yetki__fak_id__1A14E395">
+          <End Role="fakulte" Type="Self.fakulte" Multiplicity="1" />
+          <End Role="yetki" Type="Self.yetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fakulte">
+              <PropertyRef Name="fakulte_id" />
+            </Principal>
+            <Dependent Role="yetki">
+              <PropertyRef Name="fak_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="etu_rehberEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admin" EntityType="Self.admin" />
+          <EntitySet Name="birim" EntityType="Self.birim" />
+          <EntitySet Name="bolum" EntityType="Self.bolum" />
+          <EntitySet Name="fakulte" EntityType="Self.fakulte" />
+          <EntitySet Name="liste" EntityType="Self.liste" />
+          <EntitySet Name="yetki" EntityType="Self.yetki" />
+          <AssociationSet Name="FK__liste__admin_id__1DE57479" Association="Self.FK__liste__admin_id__1DE57479">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="liste" EntitySet="liste" />
+          </AssociationSet>
+          <AssociationSet Name="FK__yetki__admin_id__1920BF5C" Association="Self.FK__yetki__admin_id__1920BF5C">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="yetki" EntitySet="yetki" />
+          </AssociationSet>
+          <AssociationSet Name="FK__liste__birim_id__1FCDBCEB" Association="Self.FK__liste__birim_id__1FCDBCEB">
+            <End Role="birim" EntitySet="birim" />
+            <End Role="liste" EntitySet="liste" />
+          </AssociationSet>
+          <AssociationSet Name="FK__yetki__birim_id__1B0907CE" Association="Self.FK__yetki__birim_id__1B0907CE">
+            <End Role="birim" EntitySet="birim" />
+            <End Role="yetki" EntitySet="yetki" />
+          </AssociationSet>
+          <AssociationSet Name="FK__bolum__fak_id__164452B1" Association="Self.FK__bolum__fak_id__164452B1">
+            <End Role="fakulte" EntitySet="fakulte" />
+            <End Role="bolum" EntitySet="bolum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__liste__bolum_id__20C1E124" Association="Self.FK__liste__bolum_id__20C1E124">
+            <End Role="bolum" EntitySet="bolum" />
+            <End Role="liste" EntitySet="liste" />
+          </AssociationSet>
+          <AssociationSet Name="FK__liste__fak_id__1ED998B2" Association="Self.FK__liste__fak_id__1ED998B2">
+            <End Role="fakulte" EntitySet="fakulte" />
+            <End Role="liste" EntitySet="liste" />
+          </AssociationSet>
+          <AssociationSet Name="FK__yetki__fak_id__1A14E395" Association="Self.FK__yetki__fak_id__1A14E395">
+            <End Role="fakulte" EntitySet="fakulte" />
+            <End Role="yetki" EntitySet="yetki" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="etu_rehberModelStoreContainer" CdmEntityContainer="etu_rehberEntities">
+          <EntitySetMapping Name="admin">
+            <EntityTypeMapping TypeName="etu_rehberModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="birim">
+            <EntityTypeMapping TypeName="etu_rehberModel.birim">
+              <MappingFragment StoreEntitySet="birim">
+                <ScalarProperty Name="birim_id" ColumnName="birim_id" />
+                <ScalarProperty Name="birim_adi" ColumnName="birim_adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bolum">
+            <EntityTypeMapping TypeName="etu_rehberModel.bolum">
+              <MappingFragment StoreEntitySet="bolum">
+                <ScalarProperty Name="bolum_id" ColumnName="bolum_id" />
+                <ScalarProperty Name="bolum_adi" ColumnName="bolum_adi" />
+                <ScalarProperty Name="fak_id" ColumnName="fak_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fakulte">
+            <EntityTypeMapping TypeName="etu_rehberModel.fakulte">
+              <MappingFragment StoreEntitySet="fakulte">
+                <ScalarProperty Name="fakulte_id" ColumnName="fakulte_id" />
+                <ScalarProperty Name="fakulte_adi" ColumnName="fakulte_adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="liste">
+            <EntityTypeMapping TypeName="etu_rehberModel.liste">
+              <MappingFragment StoreEntitySet="liste">
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="liste_id" ColumnName="liste_id" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="gorevi" ColumnName="gorevi" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="entity" ColumnName="entity" />
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+                <ScalarProperty Name="fak_id" ColumnName="fak_id" />
+                <ScalarProperty Name="birim_id" ColumnName="birim_id" />
+                <ScalarProperty Name="bolum_id" ColumnName="bolum_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="yetki">
+            <EntityTypeMapping TypeName="etu_rehberModel.yetki">
+              <MappingFragment StoreEntitySet="yetki">
+                <ScalarProperty Name="yetki_id" ColumnName="yetki_id" />
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+                <ScalarProperty Name="fak_id" ColumnName="fak_id" />
+                <ScalarProperty Name="birim_id" ColumnName="birim_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

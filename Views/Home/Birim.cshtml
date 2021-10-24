@@ -1,0 +1,143 @@
+﻿@using etu_rehber.Models;
+@model IEnumerable<etu_rehber.Models.liste>
+@{
+    ViewBag.Title = "Birim";
+    IEnumerable<fakulte> fakulte = ViewData["fakultee"] as IEnumerable<fakulte>;
+    IEnumerable<birim> birim = ViewData["birimm"] as IEnumerable<birim>;
+    IEnumerable<admin> admin = ViewData["adminn"] as IEnumerable<admin>;
+    IEnumerable<bolum> bolum = ViewData["bolumm"] as IEnumerable<bolum>;
+    IEnumerable<liste> liste = ViewData["listee"] as IEnumerable<liste>;
+    IEnumerable<yetki> yetki = ViewData["yetkii"] as IEnumerable<yetki>;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (User.IsInRole("Adem Tanas") || User.IsInRole("İlyas Arınç") || User.IsInRole("Demet Karaman") || User.IsInRole("Rasim Yıldırım") || User.IsInRole("Ahmet Yıldırım") || User.IsInRole("Hasan Ali"))
+{
+    <body class="hm-gradient">
+        <main>
+            <!--MDB Tables-->
+            <div class="container mt-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2>ETU KİŞİLER </h2> <br /> <br />
+                        <!--Table-->
+                        <table class="table table-hover">
+                            <!--Table head-->
+                            <thead class="mdb-color darken-3">
+                                <tr class="text-white">
+                                    <th>Adı Soyadı</th>
+                                    <th>TelefonNo</th>
+                                    <th>Mail</th>
+                                    <th>Görevi</th>
+                                    <th>Entity</th>
+                                    <th>Sil</th>
+                                    <th>Düzenle</th>
+                                    <th>Detaylar</th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in liste)
+                            {
+                                if (item.birim_id == 1)
+                                {
+                                    if (User.IsInRole("Adem Tanas") || User.IsInRole("İlyas Arınç") || User.IsInRole("Demet Karaman") || User.IsInRole("Rasim Yıldırım"))
+                                    {
+                                        <!--Table head-->
+                                        <!--Table body-->
+                                        <tbody>
+                                            <tr>
+                                                <td>@Html.DisplayFor(modelItem => item.ad) @Html.DisplayFor(modelItem => item.soyad)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.tel)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.mail)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.gorevi)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.entity)</td>
+                                                <td>@Html.ActionLink("Delete", "Delete", new { id = item.liste_id }, new { @class = "btn4" }) </td>
+                                                <td>@Html.ActionLink("Edit", "Edit", new { id = item.liste_id }, new { @class = "btn2" }) </td>
+                                                <td>@Html.ActionLink("Details", "Details", new { id = item.liste_id }, new { @class = "btn3" }) </td>
+                                            </tr>
+                                        </tbody>
+
+                                        <!--Table body-->
+                                    }
+                                }
+
+                                else if (item.birim_id == 2)
+                                {
+                                    if (User.IsInRole("Ahmet Yıldırım") || User.IsInRole("Hasan Ali"))
+                                    {
+
+                                        <tbody>
+                                            <tr>
+                                                <td>@Html.DisplayFor(modelItem => item.ad) @Html.DisplayFor(modelItem => item.soyad)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.tel)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.mail)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.gorevi)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.entity)</td>
+                                                <td> @Html.ActionLink("Delete", "Delete", new { id = item.liste_id }, new { @class = "btn4" }) </td>
+                                                <td> @Html.ActionLink("Edit", "Edit", new { id = item.liste_id }, new { @class = "btn2" }) </td>
+                                                <td>@Html.ActionLink("Details", "Details", new { id = item.liste_id }, new { @class = "btn3" }) </td>
+
+                                            </tr>
+                                        </tbody>
+                                    }
+
+                                }
+                            }
+                        </table>
+                        <p>@Html.ActionLink("NewCreate", "Create", new { id= 1 }, new { @class = "btn6" })  </p>
+                        <!--Table-->
+                    </div>
+                </div>
+
+            </div>
+            <!--MDB Tables-->
+
+        </main>
+
+    </body>
+    <style>
+        .hm-gradient {
+            background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+        }
+
+        .darken-grey-text {
+            color: #2E2E2E;
+        }
+
+        .input-group.md-form.form-sm.form-2 input {
+            border: 1px solid #bdbdbd;
+            border-top-left-radius: 0.25rem;
+            border-bottom-left-radius: 0.25rem;
+        }
+
+            .input-group.md-form.form-sm.form-2 input.purple-border {
+                border: 1px solid #9e9e9e;
+            }
+
+            .input-group.md-form.form-sm.form-2 input[type=text]:focus:not([readonly]).purple-border {
+                border: 1px solid #ba68c8;
+                box-shadow: none;
+            }
+
+        .form-2 .input-group-addon {
+            border: 1px solid #ba68c8;
+        }
+
+        .danger-text {
+            color: #ff3547;
+        }
+
+        .success-text {
+            color: #00C851;
+        }
+
+        .table-bordered.red-border, .table-bordered.red-border th, .table-bordered.red-border td {
+            border: 1px solid #ff3547 !important;
+        }
+
+        .table.table-bordered th {
+            text-align: center;
+        }
+    </style>
+}
+

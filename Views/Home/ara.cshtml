@@ -1,0 +1,151 @@
+﻿@model IEnumerable<etu_rehber.Models.bolum>
+@using etu_rehber.Models;
+
+
+@{
+    ViewBag.Title = "ara";
+    IEnumerable<fakulte> fakulte = ViewData["fakultee"] as IEnumerable<fakulte>;
+    IEnumerable<birim> birim = ViewData["birimm"] as IEnumerable<birim>;
+    IEnumerable<admin> admin = ViewData["adminn"] as IEnumerable<admin>;
+    IEnumerable<bolum> bolum = ViewData["bolumm"] as IEnumerable<bolum>;
+    IEnumerable<liste> liste = ViewData["listee"] as IEnumerable<liste>;
+    IEnumerable<yetki> yetki = ViewData["yetkii"] as IEnumerable<yetki>;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@{
+    string def = ViewBag.araacakelime;
+}
+<style>
+    .table {
+        width: 80%;
+        max-width: 80%;
+        margin-bottom: 20px;
+    }
+</style>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" style="height: 700px;">
+    <section class="our-webcoderskull padding-lg ">
+        <div class="container">
+            <h2>@ViewBag.araacakelime</h2>
+            @foreach (var item in admin)
+            {
+
+                <table class="table table-striped">
+
+                    @if (def == @item.adi)
+                    {
+                        <h3 > ADMİN </h3>
+                        <tr class="success">
+
+                            <td>
+                                @item.adi
+                            </td>
+                            <td>
+                                @item.durum
+                            </td>
+                            <td> @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn4" }) </td>
+                            <td> @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn2" }) </td>
+                            <td> @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn3" })  </td>
+                        </tr>
+                    }
+                </table>
+
+            }
+
+            @foreach (var item in bolum)
+            {
+
+
+
+                <table class="table table-striped">
+
+                    @if (def == @item.bolum_adi)
+                    {
+                        <h3> BOLUM </h3>
+                        <tr class="success">
+                            <td>
+                                @item.bolum_adi
+                            </td>
+                            <td> @Html.ActionLink("Delete", "Delete", new { id = item.bolum_id }, new { @class = "btn4" }) </td>
+                            <td> @Html.ActionLink("Edit", "Edit", new { id = item.bolum_id }, new { @class = "btn2" }) </td>
+                            <td> @Html.ActionLink("Details", "Details", new { id = item.bolum_id }, new { @class = "btn3" })  </td>
+                        </tr>
+                    }
+                </table>
+
+
+
+            }
+
+
+            @foreach (var item in fakulte)
+            {
+
+                <html>
+                <body>
+                    <table class="table table-striped">
+
+                        @if (def == @item.fakulte_adi)
+                        {
+                            <h3> FAKULTE </h3>
+                            <tr class="success">
+                                <td>
+                                    @item.fakulte_adi
+                                </td>
+                                <td> @Html.ActionLink("Delete", "Delete", new { id = item.fakulte_id }, new { @class = "btn4" }) </td>
+                                <td> @Html.ActionLink("Edit", "Edit", new { id = item.fakulte_id }, new { @class = "btn2" }) </td>
+                                <td> @Html.ActionLink("Details", "Details", new { id = item.fakulte_id }, new { @class = "btn3" })  </td>
+                            </tr>
+                        }
+                    </table>
+                </body>
+            </html>
+
+        }
+
+            @foreach (var item in liste)
+            {
+                    <table class="table table-striped">
+
+                        @if (def == @item.ad || def == item.soyad)
+                        {
+                            <h3> LİSTE </h3>
+                            <tr class="success">
+                                <td>
+                                    @item.ad
+                                </td>
+                                <td>
+                                    @item.soyad
+                                </td>
+                                <td>
+                                    @item.gorevi
+                                </td>
+                                <td>
+                                    @item.tel
+                                </td>
+                                <td>
+                                    @item.mail
+                                </td>
+                                <td> @Html.ActionLink("Delete", "Delete", new { id = item.liste_id }, new { @class = "btn4" }) </td>
+                                <td> @Html.ActionLink("Edit", "Edit", new { id = item.liste_id }, new { @class = "btn2" }) </td>
+                                <td> @Html.ActionLink("Details", "Details", new { id = item.liste_id }, new { @class = "btn3" })  </td>
+                            </tr>
+                        }
+                    </table>
+
+
+
+        }
+
+
+</div>
+        </section>
+
+
+
+
+
+

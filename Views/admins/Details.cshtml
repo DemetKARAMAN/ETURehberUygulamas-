@@ -1,0 +1,50 @@
+﻿@model etu_rehber.Models.admin
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .our-webcoderskulll {
+        background: #212121;
+        margin-right: 20px;
+        margin-left: -35px;
+    }
+</style>
+<br /> <br />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" style="height: 500px;">
+
+<section class="our-webcoderskulll padding-lg">
+    <div class="container">
+        <div class="row heading heading-icon">
+
+            <h2> ADMİN DETAYLAR </h2>
+        </div>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.adi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.adi)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.durum)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.durum)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.id }, new { @class = "btn2" })
+            @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-default" })
+        </p>
+    </div>
+</section>

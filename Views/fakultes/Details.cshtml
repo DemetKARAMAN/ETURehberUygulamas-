@@ -1,0 +1,41 @@
+﻿@model etu_rehber.Models.fakulte
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" style="height: 500px;">
+<style>
+    .our-webcoderskulll {
+        background: #212121;
+        margin-right: 20px;
+        margin-left: -35px;
+    }
+</style>
+<br /> <br />
+<section class="our-webcoderskulll padding-lg">
+    <div class="container">
+        <div class="row heading heading-icon">
+
+            <h2> FACULTY DETAİLS  </h2>
+        </div>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.fakulte_adi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.fakulte_adi)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.fakulte_id }, new { @class = "btn2" }) 
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+</div>
+</section>

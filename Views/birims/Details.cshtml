@@ -1,0 +1,44 @@
+﻿@model etu_rehber.Models.birim
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .our-webcoderskulll {
+        background: #212121;
+        margin-right: 20px;
+        margin-left: -35px;
+    }
+</style>
+<br />
+<br />
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" style="height: 500px;">
+
+<section class="our-webcoderskulll padding-lg">
+    <div class="container">
+        <div class="row heading heading-icon">
+
+            <h2> BİRİM DETAYLARI </h2>
+        </div>
+        <div>
+            <hr />
+            <dl class="dl-horizontal h">
+                <dt>
+                    @Html.DisplayNameFor(model => model.birim_adi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.birim_adi)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.birim_id }, new { @class = "btn2" })
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+</section>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<etu_rehber.Models.fakulte>
+@using etu_rehber.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" style="height: 500px;">
+
+<section class="our-webcoderskull padding-lg ">
+    <div class="container">
+        <div class="row heading heading-icon ">
+            <br />
+            <h2 class="as">ETÜ Fakülteler </h2> <br /> <br />
+        </div>
+        <ul class="row">
+            @foreach (var item in Model)
+            {
+
+                <li class="col-12 col-md-6 col-lg-3 ">
+                    <div class=" cnt-block equal-hight" style="height: 170px;">
+                        <h3><td> @Html.ActionLink(item.fakulte_adi, "fakulte", new { id = item.fakulte_id }) </td></h3>
+                        <ul class="follow-us clearfix">
+                            <li><td> @Html.ActionLink("Delete", "Delete", new { id = item.fakulte_id }, new { @class = "btn4" }) </td></li>
+                            <li><td> @Html.ActionLink("Edit", "Edit", new { id = item.fakulte_id }, new { @class = "btn2" }) </td></li>
+                            <li><td> @Html.ActionLink("Details", "Details", new { id = item.fakulte_id }, new { @class = "btn3" })  </td></li>
+
+                        </ul>
+                    </div>
+                </li>
+            }
+        </ul>
+        <td>
+            @Html.ActionLink("Create New", "Create", new { id = 1 }, new { @class = "btn6" })
+        </td>
+    </div>
+</section>

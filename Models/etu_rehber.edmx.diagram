@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="365700191ca14c19872486eafb71bafe" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="etu_rehberModel.admin" Width="1.5" PointX="2.125" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="etu_rehberModel.birim" Width="1.5" PointX="4.875" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="etu_rehberModel.bolum" Width="1.5" PointX="4.125" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="etu_rehberModel.fakulte" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="etu_rehberModel.liste" Width="1.5" PointX="8.375" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="etu_rehberModel.yetki" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="etu_rehberModel.FK__liste__admin_id__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="etu_rehberModel.FK__yetki__admin_id__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="etu_rehberModel.FK__liste__birim_id__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="etu_rehberModel.FK__yetki__birim_id__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="etu_rehberModel.FK__bolum__fak_id__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="etu_rehberModel.FK__liste__bolum_id__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="etu_rehberModel.FK__liste__fak_id__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="etu_rehberModel.FK__yetki__fak_id__1A14E395" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

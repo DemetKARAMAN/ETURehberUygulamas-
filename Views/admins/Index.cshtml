@@ -1,0 +1,51 @@
+﻿@model IEnumerable<etu_rehber.Models.admin>
+@using etu_rehber.Models
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" style="height: 500px;">
+
+<section class="our-webcoderskull padding-lg">
+    <div class="container">
+        <div class="row heading heading-icon">
+            <br /> <br />
+            <h2 class="as">ETU  YÖNETİCİLER </h2>
+        </div>
+        <ul class="row">
+            @foreach (var item in Model)
+            {
+
+                <li class="col-12 col-md-6 col-lg-3">
+                    <div class="cnt-block equal-hight" style="height: 320px;">
+
+                        <div class="pic">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj9mIE2bEJkGi-gQMfq_WOhOJfyovr9UjEUQ&usqp=CAU">
+                        </div>
+                        <td> <h3> @Html.DisplayFor(modelItem => item.adi)</h3> </td>
+
+                        <td>@Html.DisplayFor(modelItem => item.durum)</td>
+
+                        <ul class="follow-us clearfix">
+                            <li><td> @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn4" }) </td></li>
+                            <li><td> @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn2" }) </td></li>
+                            <li><td> @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn3" })  </td></li>
+
+                        </ul>
+
+                    </div>
+                </li>
+
+
+            }
+        </ul>
+        <td>
+            @Html.ActionLink("Create New", "Create", new { id = 1 }, new { @class = "btn6" })
+        </td>
+    </div>
+</section>

@@ -1,0 +1,122 @@
+﻿@model etu_rehber.Models.liste
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .our-webcoderskulll {
+        background: #212121;
+        margin-right: 20px;
+        margin-left: -35px;
+    }
+</style>
+<br />
+<br />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" style="height: 500px;">
+
+<section class="our-webcoderskulll padding-lg">
+    <div class="container">
+        <div class="row heading heading-icon">
+
+            <h2>KİŞİ DETAYLARI</h2>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ad)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ad)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.soyad)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.soyad)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.tel)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.tel)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.mail)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.mail)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.gorevi)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.gorevi)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.tarih)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.tarih)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.entity)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.entity)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.admin.adi)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.admin.adi)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.birim.birim_adi)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.birim.birim_adi)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.bolum.bolum_adi)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.bolum.bolum_adi)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.fakulte.fakulte_adi)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.fakulte.fakulte_adi)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.liste_id }, new { @class = "btn2" })
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+</section>
