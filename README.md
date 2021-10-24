@@ -1,0 +1,2 @@
+# ETURehberUygulamas-
+Bu projemde datadan çektiğim yetkiye göre giriş yapıp kişi ekleme düzenleme silme işlemleri yapılır Bu projedeki amaç giriş yapan kullanıcıların hangi bölüme yetkisi varsa o bölümlere giriş yapması ve o bölümlerde işlem yapabilmesidir.Admin kullanıcıda tam yetkili kullanıcı kimin eklediğini kimin ne düzenleme yaptığını görür.Projemde fakülteler , bölümler, birimler bulunmaktadır.Proglama dili olarak ASP.NET, MSSQL  kullandım.
